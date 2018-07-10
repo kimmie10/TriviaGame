@@ -108,11 +108,15 @@ $("#start").on("click", function () {
 
   console.log(myArray[1]);
 
+function input() {
   for (var i = 0; i < myArray.length; i++) {
     const questionNum = "question" + i;
-    let userAnswer = $(`input[name='questionNum${i}']:checked`);
+    let userAnswer = $(`input[name='question${i}']:checked`);
     console.log('QUESTION', i);
     console.log('USER ANSWER', userAnswer.val());
+   // $.each(userAnswer, function() {
+    //  console.log($(this).val());
+    //})
     let newDiv = `<div class="questionDiv" id="${i}">
                     ${myArray[i].question}
                     <div class="answers">
@@ -126,7 +130,7 @@ $("#start").on("click", function () {
 
     $(".questions").append("<br>", newDiv);
   }
-
+}
   const checkAnswer = function (questionNum, questions) {
     const questionAnswer = $(`input[name='question-${questionNumber}']:checked`).val()
     const correctAnswer = questions[questionNumber].correctAnswer
@@ -134,10 +138,12 @@ $("#start").on("click", function () {
     return questionAnswer === correctAnswer
   }
 
+
   $("#btn").on("click", function () {
     //const userAnswer =  $("input[name='questionNum${i}']:checked")
     //const answer = correctAnswer.val();
     //console.log('', i);
+    input();
     $("#btn").hide();
     $(".questions").hide();
     $("#cor").show();
@@ -155,6 +161,7 @@ $("#start").on("click", function () {
     $("#wrong").html("<h3>" + incorrect + "</h3>");
     wrong++;
   }*/
+  input();
 
 });
 
